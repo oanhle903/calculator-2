@@ -12,7 +12,7 @@ while True:
     # print(tokens)
     # [add 2 3]
     if 'q' in tokens:
-        print('You will exit')
+        print('You will exit.')
         break
 
     # check the length of arguments that user inputs
@@ -21,17 +21,28 @@ while True:
         continue
     else:
         if len(tokens) == 2:
-            operator = tokens[0]  
-            num1 = tokens[1] 
+            # operator = tokens[0]  
+            # num1 = tokens[1]
+            operator, num1 = tokens 
         else:
-            operator = tokens[0]  
-            num1 = tokens[1] 
-            num2 = tokens[2] 
+            # by explicit indexing
+            # operator = tokens[0]  
+            # num1 = tokens[1] 
+            # num2 = tokens[2] 
+            # by "list unpacking"
+            operator, num1, num2 = tokens
     
     # check if the num1 and num2 are the numbers
     if not num1.isdigit() or not num2.isdigit():
-        print('Please enter numbers')
+        print('Please enter numbers!')
         continue 
+    
+    # check if the operator is valid
+    operator_list = ['+', '-', '*', '/', 'square', 'cube', 'pow', 'mod']
+    if operator not in operator_list:
+        print('Invalid operator!')
+        continue
+    
     
     result = None
 
